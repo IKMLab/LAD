@@ -260,7 +260,7 @@ if __name__ == "__main__":
     parser.add_argument(
         '--epoch',
         default=15,
-        help='Total number of full steps for training.',
+        help='Total number of training steps.',
         type=int,
     )
     parser.add_argument(
@@ -278,7 +278,7 @@ if __name__ == "__main__":
     parser.add_argument(
         '--warmup_rate',
         default=0.3,
-        help='Linear scheduler warmup step.',
+        help='The ratio of Linear scheduler warmup steps.',
         type=float,
     )
     parser.add_argument(

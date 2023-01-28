@@ -63,6 +63,57 @@ export TASK=qnli
 bash scripts/${TASK}.sh
 ```
 
+## Arguments of run_fine_tune.py
+The following table gives an explanation of the arguments listed above.  
+If you want to view the details of each arguments (e.g., dropout rate, weight decay, maximum gradient norm and so on), type `python run_fine_tune.py -h` in your terminal.
+
+| Arguments     | Description                                                                                                                                                                |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `experiment`  | Name of the experiment to create folders to  save model checkpoints, config files, and tensorboard logging files. It would help if you gave each experiment a unique name. |
+| `ptrain_ver`  | Specify which pre-trained BERT model you want to fine-tune. We support the cased and uncased models of `bert-base` and `bert-large`.                                       |
+| `task`        | Specify the downstream task you want to solve. It should be a lower case string.                                                                                           |
+| `dataset`     | Specify the dataset of a downstream task. For example, `train` refers to the training set and `dev` refers to the development set.                                         |
+| `num_class`   | Number of classes to classify. `MNLI` is a classification task with `3` labels, so we set it to `3`.                                                                                |
+| `accum_step`  | Gradient accumulation step.                                                                                                                                                |
+| `batch_size`  | Training batch size.                                                                                                                                                       |
+| `ckpt_step`   | Checkpoint save interval.                                                                                                                                                  |
+| `log_step`    | Logging interval of `tensorboard`.                                                                                                                                         |
+| `lr`          | Optimizer `torch.optim.AdamW`'s learning rate.                                                                                                                             |
+| `max_seq_len` | Maximum input sequence length for a model.                                                                                                                                 |
+| `device_id`   | Device ID of a model. `-1` refers to `CPU` and other values which is greater and equal to `0` means other CUDA devices.                                                     |
+| `seed`        | Random seed of each experiment.                                                                                                                                            |
+| `total_step`  | Total number of step to perform training. `step= (#data instances) // batch_size`.                                                                                         |
+| `warmup_step` | Linear scheduler warmup step.                                                                                                                                              |
+
+## Arguments of run_lad_distil_epoch.py
+The following table gives an explanation of the arguments listed above.  
+If you want to view the details of each arguments (e.g., dropout rate, weight decay, maximum gradient norm, number of attention heads and so on), type `python run_lad_distil_epoch.py -h` in your terminal.
+
+| Arguments           | Description                                                                                                                                                               |
+|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `teacher_exp`       | Experiment name of the fine-tuned teacher model. It is used to find the path of the teacher model's checkpoint.                                                             |
+| `tckpt`             | Checkpoint of the teacher model.                                                                                                                                          |
+| `experiment`        | Name of the experiment to create folders to save model checkpoints, config files, and tensorboard logging files. It would help if you gave each experiment a unique name. |
+| `task`              | Specify the downstream task you want to solve. It should be a lower case string.                                                                                          |
+| `batch_size`        | Training batch size.                                                                                                                                                      |
+| `ckpt_step`         | Checkpoint save interval.                                                                                                                                                 |
+| `log_step`          | Logging interval of `tensorboard`.                                                                                                                                        |
+| `d_ff`              | Dimension of the feed forward layers of the Transformer.                                                                                                                  |
+| `d_model`           | Hidden dimension of the Transformer layers.                                                                                                                               |
+| `lr`                | Optimizer `torch.optim.AdamW`'s learning rate.                                                                                                                            |
+| `gate_lr`           | Gate Network's optimizer: `torch.optim.AdamW`'s learning rate.                                                                                                            |
+| `num_hidden_layers` | Number of Transformer layers.                                                                                                                                             |
+| `epoch`        | Total number of training steps. `training_steps = round(#data instances / batch_size * epoch)`.                                                                                        |
+| `warmup_rate`       | The ratio of Linear scheduler warmup steps. `warmup_steps = training_steps * warmup_rate`                                                                                                            |
+| `device_id`         | Device ID of the student model. `-1` refers to `CPU` and other values which is greater and equal to `0` means other CUDA devices.                                         |
+| `tdevice_id`        | Device ID of the teacher model. `-1` refers to `CPU` and other values which is greater and equal to `0` means other CUDA devices.                                         |
+| `gate_device_id`    | Device ID of the Gate Network. `-1` refers to `CPU` and other values which is greater and equal to `0` means other CUDA devices.                                          |
+| `seed`              | Random seed of each experiment.                                                                                                                                           |
+| `softmax_temp`      | Softmax temperature.                                                                                                                                                      |
+| `soft_weight`       | Weight of the soft target loss.                                                                                                                                           |
+| `hard_weight`       | Weight of the hard target loss.                                                                                                                                           |
+| `hidden_mse_weight` | Weight of the MSE loss of the hidden states.                                                                                                                              |
+
 ## Please cite our paper if you use our code.
 - The following citation is under construction.
 ```
