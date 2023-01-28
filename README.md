@@ -1,5 +1,6 @@
 # LAD: Layer-wise Adaptive Distillation for BERT Model Compression
-This repository is under construction. The paper link will be available when the paepr is officially published.
+This is the source code of [our paper](https://www.mdpi.com/2099748) published in *Sensors* as 
+part of the Special Issue Data Engineering in the Internet of Things.
 
 ## Quick introduction
 - LAD is a novel framework to improve the efficiency of the task-specific distillation for BERT model compression.
@@ -115,9 +116,20 @@ If you want to view the details of each arguments (e.g., dropout rate, weight de
 | `hidden_mse_weight` | Weight of the MSE loss of the hidden states.                                                                                                                              |
 
 ## Please cite our paper if you use our code.
-- The following citation is under construction.
-```
-Lin, Y.-J.; Chen, K.-Y.; Kao, H.-Y. LAD: Layer-Wise Adaptive Distillation for BERT Model Compression. Sensors 2023, 1, 0. https://doi.org/
+```bibtex
+@Article{s23031483,
+    AUTHOR = {Lin, Ying-Jia and Chen, Kuan-Yu and Kao, Hung-Yu},
+    TITLE = {LAD: Layer-Wise Adaptive Distillation for BERT Model Compression},
+    JOURNAL = {Sensors},
+    VOLUME = {23},
+    YEAR = {2023},
+    NUMBER = {3},
+    ARTICLE-NUMBER = {1483},
+    URL = {https://www.mdpi.com/1424-8220/23/3/1483},
+    ISSN = {1424-8220},
+    ABSTRACT = {Recent advances with large-scale pre-trained language models (e.g., BERT) have brought significant potential to natural language processing. However, the large model size hinders their use in IoT and edge devices. Several studies have utilized task-specific knowledge distillation to compress the pre-trained language models. However, to reduce the number of layers in a large model, a sound strategy for distilling knowledge to a student model with fewer layers than the teacher model is lacking. In this work, we present Layer-wise Adaptive Distillation (LAD), a task-specific distillation framework that can be used to reduce the model size of BERT. We design an iterative aggregation mechanism with multiple gate blocks in LAD to adaptively distill layer-wise internal knowledge from the teacher model to the student model. The proposed method enables an effective knowledge transfer process for a student model, without skipping any teacher layers. The experimental results show that both the six-layer and four-layer LAD student models outperform previous task-specific distillation approaches during GLUE tasks.},
+    DOI = {10.3390/s23031483}
+}
 ```
 
 ## Any questions?
