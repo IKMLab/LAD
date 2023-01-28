@@ -1,7 +1,7 @@
 device_id=0
 task=mrpc
 
-python run_lad_distil.py           \
+python run_lad_distil_epoch.py     \
 --teacher_exp teacher_base         \
 --tckpt 345                        \
 --experiment LAD_6_layer           \
@@ -25,10 +25,10 @@ python run_lad_distil.py           \
 --hard_weight 0.5                  \
 --hidden_mse_weight 500
 
-python run_fine_tune_eval.py                   \
---experiment LAD_6_layer                       \
---task $task                                   \
---dataset dev                                  \
---batch_size 512                               \
---device_id $device_id                         \
+python run_fine_tune_eval.py      \
+--experiment LAD_6_layer          \
+--task $task                      \
+--dataset dev                     \
+--batch_size 512                  \
+--device_id $device_id            \
 --do_predict

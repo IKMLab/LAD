@@ -1,7 +1,7 @@
 device_id=0
 task=qnli
 
-python run_lad_distil.py           \
+python run_lad_distil_epoch.py     \
 --teacher_exp teacher_base         \
 --tckpt 9822                       \
 --experiment LAD_6_layer           \
